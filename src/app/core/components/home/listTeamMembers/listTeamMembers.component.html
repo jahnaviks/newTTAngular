@@ -1,0 +1,167 @@
+<!-- <table class="table table-condensed fontColor" border="1">
+    <thead>
+      <tr>
+        <th><font color="black">Employee ID</font></th>
+        <th><font color="black">Email ID</font></th>
+        <th><font color="black">Employee Name</font></th>
+        <th><font color="black">Mobile Number</font></th>
+        <th><font color="black">Is Active</font></th>
+        <th><font color="black">Role ID</font></th>
+        <th><font color="black">Role Name</font></th>
+        <th><font color="black">Project ID</font></th>
+        <th><font color="black">Project Name</font></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="success" *ngFor="let emp of arrlist"> 
+        <td><font color="black" *ngIf="emp?.empId">{{emp.empId}}</font></td>
+        <td><font color="black" *ngIf="emp?.email_Id">{{emp.email_Id}}</font></td>
+        <td><font color="black" *ngIf="emp?.ename">{{emp.ename}}</font></td>
+        <td><font color="black" *ngIf="emp?.mobile">{{emp.mobile}}</font></td>
+        <td><font color="black" *ngIf="emp?.isActive">{{emp.isActive}}</font></td>
+        <td><font color="black" *ngIf="emp?.roleId">{{emp.roleId}}</font></td>
+        <td><font color="black" *ngIf="emp?.roleName">{{emp.roleName}}</font></td>            
+        <td><font color="black" *ngIf="emp?.projectId">{{emp.projectId}}</font></td>
+        <td><font color="black" *ngIf="emp?.projectName">{{emp.projectName}}</font></td>
+        
+      </tr>
+    </tbody>
+  </table> -->
+
+
+  <style>.pointer {cursor: pointer;}</style>
+
+  <div class="mat-elevation-z8">  
+    <table mat-table [dataSource]="employeelist" matSort class="table table-inverse table-hover">  
+    
+      <ng-container matColumnDef="empId">  
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><font color="black"> Id </font></th>  
+        <a class="nav-link" href="#" link="#C0C0C0" vlink="#808080" > <td mat-cell *matCellDef="let user" (click)="ShowRegForm(user)"><font color="black"> {{user.empId}}</font> </td>  </a>
+      </ng-container>  
+    
+      <ng-container matColumnDef="email_Id">  
+        <th mat-header-cell *matHeaderCellDef mat-sort-header><font color="black"> Email ID </font></th>  
+        <td mat-cell *matCellDef="let user"><font color="black"> {{user.email_Id}}</font> </td>  
+      </ng-container>  
+    
+      <ng-container matColumnDef="ename">  
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> <font color="black">Employee Name </font></th>  
+        <td mat-cell *matCellDef="let user"><font color="black"> {{user.ename}} </font></td>  
+      </ng-container>
+
+          <ng-container matColumnDef="mobile">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <font color="black">Mobile Number </font></th>  
+            <td mat-cell *matCellDef="let user"><font color="black"> {{user.mobile}}</font> </td>  
+          </ng-container>      
+        
+    
+          <ng-container matColumnDef="isActive" hidden>  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> <font color="black">Is Active</font> </th>  
+            <td mat-cell *matCellDef="let user"><font color="black"> {{user.isActive}}</font> </td>  
+          </ng-container>  
+    
+          <ng-container matColumnDef="roleId">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><font color="black"> Role Id</font> </th>  
+            <td mat-cell *matCellDef="let user"><font color="black"> {{user.roleId}}</font> </td>  
+          </ng-container>  
+    
+          <ng-container matColumnDef="roleName">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><font color="black"> Role Name </font></th>  
+            <td mat-cell *matCellDef="let user"><font color="black"> {{user.roleName}}</font> </td>  
+          </ng-container>  
+
+          <ng-container matColumnDef="projectId">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><font color="black"> Project Id</font> </th>  
+            <td mat-cell *matCellDef="let user"><font color="black"> {{user.projectId}}</font> </td>  
+          </ng-container>  
+    
+          <ng-container matColumnDef="projectName">  
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><font color="black"> Project Name</font> </th>  
+            <td mat-cell *matCellDef="let user"><font color="black"> {{user.projectName}}</font> </td>  
+          </ng-container>  
+          
+          <ng-container matColumnDef="Edit">  
+            <th mat-header-cell *matHeaderCellDef> Edit </th>  
+            <td mat-cell *matCellDef="let user" (click)="ShowRegForm(user)" class="text-primary pointer">Edit</td>
+          <!-- <mdb-icon fas icon="edit" class="mr-2 grey-text" aria-hidden="true" ></mdb-icon>Edit</td> -->
+            <!-- <td> <a (click)="ShowRegForm(e)">Edit</a> </td>   -->
+            </ng-container>
+          
+            <!-- <ng-container matColumnDef="Delete">  
+            <th mat-header-cell *matHeaderCellDef> Delete </th>  
+            <td mat-cell *matCellDef="let user" (click)="ShowRegFormForDelete(user)" class="text-primary pointer">Delete </td>  
+            </ng-container> -->
+          
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>  
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>  
+    </table>  
+    
+    <mat-paginator [pageSizeOptions]="[5, 10, 25,50,75, 100]"></mat-paginator>  
+  </div> 
+
+
+<div *ngIf="showEditPage">
+  <form #regForm="ngForm" name="regForm" >
+    <table class="table table-condensed">
+        <tbody>
+          <tr>
+            <td><p>Name</p></td>
+            <td><input type="text" class="form-control" name="empname" [(ngModel)]="ename" #empname="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && empname.invalid }" pattern="^[a-zA-Z ]{1,75}$" required/>
+              <div *ngIf="regForm.submitted && empname.invalid" class="alert alert-danger col-xs-4">
+                  <div *ngIf="empname.errors.required">Name is required</div>
+                  <!-- <div *ngIf="fname.errors.minlength">Minimum length is 6</div> -->
+                  <div *ngIf="empname.errors.pattern">Accepts alphabets, spaces and maximum of 75 characters</div>
+              </div></td>
+            </tr>
+            
+            <tr>
+            <td><p>Email</p> </td>
+            <td><input type="text" class="form-control" name="email" [(ngModel)]='email_Id' #email="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && email.invalid }" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+              <div *ngIf="regForm.submitted && email.invalid" class="alert alert-danger col-xs-4">
+                <div *ngIf="email.errors.required">Email is required</div>
+                <div *ngIf="email.errors.pattern">Email must be a valid email address</div>
+            </div></td>
+            </tr>
+            
+            <tr>
+                <td><p>Role Name</p></td>
+                <td><input type="text" class="form-control" name="rname" [(ngModel)]="roleName" #rname="ngModel"  [ngClass]="{ 'is-invalid': regForm.submitted && rname.invalid }"  pattern="^[a-zA-Z ]{1,75}$" required />
+                  <div *ngIf="regForm.submitted && rname.invalid" class="alert alert-danger col-xs-4">
+                      <div *ngIf="rname.errors.required">Role Name is required</div>
+                      <!-- <div *ngIf="lname.errors.minlength">Minimum length is 6</div> -->
+                  </div></td>
+                </tr>
+                <tr>
+                    <td><p>Project Name</p> </td>
+                    <td><input type="text" class="form-control" name="pname" [(ngModel)]='projectName' #pname="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && pname.invalid }" required>
+                      <div *ngIf="regForm.submitted && pname.invalid" class="alert alert-danger col-xs-4">
+                        <div *ngIf="pname.errors.required">Project Name is required</div>
+                        
+                    </div>
+                    </td>
+                </tr>
+                <tr hidden>
+                  <td><p>Is Active</p></td>
+                  <td><input type="text" class="form-control" name="active" [(ngModel)]="isActive" #active="ngModel"  [ngClass]="{ 'is-invalid': regForm.submitted && active.invalid }"  pattern="^[0-1]{1}$" required />
+                    <div *ngIf="regForm.submitted && active.invalid" class="alert alert-danger col-xs-4">
+                        <div *ngIf="active.errors.required">Active Status is required</div>
+                        <!-- <div *ngIf="lname.errors.minlength">Minimum length is 6</div> -->
+                    </div></td>
+                  </tr>
+                <tr>
+                  <td><p>AE Email</p> </td>
+                  <td><input type="text" class="form-control" name="AEemail" [(ngModel)]='ae_email_Id' #email="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && email.invalid }" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                    <div *ngIf="regForm.submitted && email.invalid" class="alert alert-danger col-xs-4">
+                      <div *ngIf="email.errors.pattern">AE Email must be a valid email address</div>
+                  </div></td>
+                  </tr>
+                 
+            <tr>
+            
+            <td><input type="submit" class="btn btn-info" value="Update" (click)="UpdateTeamDetails(regForm)"></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>

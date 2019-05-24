@@ -1,0 +1,74 @@
+<div class="slider">
+    <div id="about-slider">
+      <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators visible-xs">
+          <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-slider" data-slide-to="1"></li>
+          <li data-target="#carousel-slider" data-slide-to="2"></li>
+        </ol>
+  
+        <div class="carousel-inner">
+  
+  
+          <div class="item active">
+            <img src="../../../../assets/img/2.jpg" class="img-responsive" alt="">
+            <div class="carousel-caption">
+              <div class="wow fadeInUp animated" data-wow-offset="0" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
+                <h2>
+                  <span>Tracking Tool</span>
+                </h2>
+              </div>
+              <div class="wow fadeInUp animated" data-wow-offset="0" data-wow-delay="0.6s" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
+                <form class="form-inline" #loginForm="ngForm" name="loginForm"  >
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="email" [(ngModel)]="email_Id" #email="ngModel" placeholder="Enter Email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" name="pswd" [(ngModel)]="password" #pswd="ngModel" placeholder="Enter Password">
+                  </div>
+                  <div>
+                  <button type="submit" name="purchase" (click)="Login(loginForm)" class="btn btn-primary btn-lg">Sign In</button>
+                  <button type="button" name="register" (click)="register()" class="btn btn-primary btn-lg">Sign Up</button>
+                </div>
+                </form>
+              </div>
+              <!-- <div class="wow fadeInUp animated" data-wow-offset="0" data-wow-delay="0.7s" style="visibility: visible;-webkit-animation-delay: 0.7s; -moz-animation-delay: 0.7s; animation-delay: 0.7s;">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <button type="button" name="purchase" (click)="login()" class="btn btn-primary btn-lg">Sign In</button>
+                  </div>
+                  <div class="form-group">
+                    <button type="button" name="register" (click)="register()" class="btn btn-primary btn-lg">Sign Up</button>
+                  </div>
+                </form>
+              </div> -->
+  
+              <!-- 				
+              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="15.0s">								
+                <form class="form-inline">								
+                  <div class="form-group">
+                      <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter Email">
+                  </div>												
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="exampleInputEmail3" placeholder="Enter Password">
+                    </div>
+                  </form>
+                </div>
+              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="21.6s">								
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <button type="button" name="purchase" class="btn btn-primary btn-lg">Sign In</button>
+                    </div>                   
+                  </form>
+              </div> -->
+            </div>
+          </div>
+        </div>
+  
+      </div>
+      <!--/#carousel-slider-->
+    </div>
+    <!--/#about-slider-->
+  </div>
+  <!--/#slider-->

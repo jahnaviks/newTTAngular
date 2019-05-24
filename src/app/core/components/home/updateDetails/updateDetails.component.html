@@ -1,0 +1,57 @@
+<form #regForm="ngForm" name="regForm" >
+        <table class="table table-condensed table-dark table-sm">
+            <tbody>
+                <tr>
+                    <td><p>Id</p></td>
+                    <td><input disabled type="text" class="form-control" name="eId" [(ngModel)]="empId" #eId="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && eId.invalid }" pattern="^[a-zA-Z ]{1,75}$" required/>
+                        <div *ngIf="regForm.submitted && empname.invalid" class="alert alert-danger col-xs-4">
+                        <div *ngIf="eId.errors.required">Name is required</div>
+                        <!-- <div *ngIf="fname.errors.minlength">Minimum length is 6</div> -->
+                        <div *ngIf="eId.errors.pattern">Accepts alphabets, spaces and maximum of 75 characters</div>
+                        </div></td>
+                </tr>
+                             
+                <tr>
+                <td><p>Email</p> </td>
+                <td><input disabled type="text" class="form-control" name="email" [(ngModel)]='email_Id' #email="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && email.invalid }" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td><p>Name</p></td>
+                  <td><input type="text" class="form-control" name="empname" [(ngModel)]="ename" #empname="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && empname.invalid }" pattern="^[a-zA-Z ]{1,75}$" required/>
+                    <div *ngIf="regForm.submitted && empname.invalid" class="alert alert-danger col-xs-4">
+                        <div *ngIf="empname.errors.required">Name is required</div>
+                        <!-- <div *ngIf="fname.errors.minlength">Minimum length is 6</div> -->
+                        <div *ngIf="empname.errors.pattern">Accepts alphabets, spaces and maximum of 75 characters</div>
+                    </div></td>
+                  </tr>
+                <tr>
+                    <td><p>Mobile Number</p> </td>
+                    <td><input name="PhoneNo" class="form-control" [(ngModel)]='mobile' #PhoneNo="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && PhoneNo.invalid }"  required pattern="^[0-9]{10}$" >
+                      <div *ngIf="regForm.submitted && PhoneNo.invalid" class="alert alert-danger col-xs-4">
+                        <div *ngIf="PhoneNo.errors.required">Mobile Number is required</div>
+                        <div *ngIf="PhoneNo.errors.pattern">allows only 10 numbers</div>
+                        <!-- <div *ngIf="PhoneNo.errors.maxlength">MAximum length is 10</div> -->
+                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p>Password</p></td>
+                    <td><input type="text" class="form-control" name="pswd" [(ngModel)]='Password' #pswd="ngModel" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,60}$"  [ngClass]="{ 'is-invalid': regForm.submitted && Password.invalid }">
+                      <div *ngIf="regForm.submitted && pswd.invalid" class="alert alert-danger col-xs-4">
+                        <div *ngIf="pswd.errors.required">Password is required</div>
+                        <!-- <div *ngIf="pswd.errors.minlength">Minimum length is 8</div> -->
+                        <div *ngIf="pswd.errors.pattern">Minimum 8 and maximum 60 characters atleast 1 Alphabet, 1 Number and 1 Special Character</div>
+                    </div>
+                      </td>
+                </tr>
+                <tr>
+                
+                <td><input type="submit" class="btn btn-info" value="Register" (click)="Save(regForm)"></td>
+                <!-- <td><input *ngIf="delete" type="submit" class="btn btn-info" value="Delete" (click)="ShowRegFormForDelete(regForm)"></td> -->
+                <td><input type="button" name="back" class="btn btn-info" value="Back to Login page" (click)="Back()"></td>
+              </tr>
+            </tbody>
+          </table>
+        </form>

@@ -1,0 +1,15 @@
+<kendo-grid [data]="customers">
+  <kendo-grid-column field="id" title="Customer Id" width="40">
+  </kendo-grid-column>
+  <kendo-grid-column field="name" title="Customer Name" width="40">
+  </kendo-grid-column>
+  <kendo-grid-column field="email" title="Customer Email" width="40">
+  </kendo-grid-column>
+  <kendo-grid-column field="tel" title="Customer Phone" width="40">
+  </kendo-grid-column>
+  <kendo-grid-column field="View_Defects" title="View Defects" width="80">
+    <ng-template kendoGridCellTemplate let-dataItem>
+        <button type="button">View Customer</button>
+    </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

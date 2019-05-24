@@ -1,0 +1,46 @@
+<input type="button" name="back" class="btn btn-info" value="Back to Login page" (click)="Back()">
+<br/><br/>
+<table class="table table-condensed fontColor" border="1">
+    <thead>
+      <tr>
+        <th><font color="black">Employee ID</font></th>
+        <th><font color="black">Email ID</font></th>
+        <th><font color="black">Employee Name</font></th>
+        <th><font color="black">Mobile Number</font></th>
+        <th><font color="black">Is Active</font></th>
+        <th><font color="black">Role ID</font></th>
+        <th><font color="black">Role Name</font></th>
+        <th><font color="black">Project ID</font></th>
+        <th><font color="black">Project Name</font></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="success"> 
+        <td><font color="black" *ngIf="emp?.empId">{{emp.empId}}</font></td>
+        <td><font color="black" *ngIf="emp?.email_Id">{{emp.email_Id}}</font></td>
+        <td><font color="black" *ngIf="emp?.ename">{{emp.ename}}</font></td>
+        <td><font color="black" *ngIf="emp?.mobile">{{emp.mobile}}</font></td>
+        <td><font color="black" *ngIf="emp?.isActive">{{emp.isActive}}</font></td>
+        <td><font color="black" *ngIf="emp?.roleId">{{emp.roleId}}</font></td>
+        <td><font color="black" *ngIf="emp?.roleName">{{emp.roleName}}</font></td>            
+        <td><font color="black" *ngIf="emp?.projectId">{{emp.projectId}}</font></td>
+        <td><font color="black" *ngIf="emp?.projectName">{{emp.projectName}}</font></td>
+        
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+  <input type="button" name="edit" class="btn btn-info" value="Edit my Details" (click)="showUpdateSection()">
+<div *ngIf="showListButton">
+    <input type="button" name="employeeList" class="btn btn-info" value="list employees" (click)="getTeamMembers()">
+</div>
+<div *ngIf="showTeamList">
+    <app-listTeamMembers></app-listTeamMembers>
+    <input type="button" name="hideTeamList" class="btn btn-info" value="Hide list of team members" (click)="toHideSection()">
+</div>
+<div *ngIf="showEditDetails">
+    <app-updateDetails></app-updateDetails>
+    <input type="button" name="hideEditDetails" class="btn btn-info" value="Hide edit section" (click)="toHideSection()">
+</div>
+
+  
