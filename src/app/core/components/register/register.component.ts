@@ -11,8 +11,13 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 employeeObject:Employee;
-//regForm:FormGroup;
-// serviceAPI:CommonAPIsService;
+email_Id:string;
+ename:string;
+mobile:string;
+password:string;
+roleName:string;
+projectName:string;
+ae_email_Id:string;
   constructor(private serviceAPI:CommonAPIsService, private router:Router) { }
 
   ngOnInit() {
@@ -30,7 +35,13 @@ employeeObject:Employee;
         {
           console.log(this.employeeObject);
           alert("Successfully Registered!!!!");
-          
+          this.email_Id = "";
+          this.ename = "";
+          this.mobile = "";
+          this.password = "";
+          this.roleName = "";
+          this.projectName = "";
+          this.ae_email_Id = "";
         }
         else
         {

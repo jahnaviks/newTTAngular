@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Employee } from '../../../../shared/Model/Employee';
 import { CommonAPIsService } from "../../../../shared/services/common-api-service";
 import { Router } from "@angular/router";
+import { NgForm } from "@angular/forms";
 
 @Component({
     selector:'app-updateDetails',
@@ -9,19 +10,25 @@ import { Router } from "@angular/router";
     styleUrls: ['./updateDetails.component.css']
 })
 export class updateDetailsComponent implements OnInit{
-    eId:string="";
-    bindEmail:string="";
-    name:string="";
-    mobile:string="";
-    email :string;
-    emp:Employee;
-        constructor(private service:CommonAPIsService, private router:Router) { }
+  empId:string="";
+  ename:string="";
+  mobile:string="";
+  email_Id :string;
+  email:string;
+  Password:string;
+  emp:Employee;
+  employeeObject:Employee;
+  password:string;
+
+  @Output() buttonClick = new EventEmitter<void>();
+        
+  constructor(private service:CommonAPIsService, private router:Router) { }
   
-    ngOnInit() {
+  ngOnInit() {
       this.getEmployeeDetails();
-    }
+  }
   
-   getEmployeeDetails(){
+  getEmployeeDetails(){
       this.service.currentMessage.subscribe(email => {
         this.email = email;
         console.log(email);
@@ -42,8 +49,54 @@ export class updateDetailsComponent implements OnInit{
           isActive:res['isActive'],
           ae_email_Id:res['ae_email_Id']
         }
+        this.email_Id=this.emp.email_Id;
+      this.empId = this.emp.empId;
+      this.ename = this.emp.ename;
+      this.mobile = this.emp.mobile;
+      this.Password = this.emp.password;
       });
       });  
       
     }
+    Save(regForm:NgForm){
+      if(regForm.valid)
+    {
+      this.FormToModel(regForm);
+      this.service.UpdateSelfDetails(this.employeeObject).subscribe(res =>
+      {
+        console.log(res);
+        //result:string;
+        if(res)
+        {
+          console.log(this.employeeObject);
+          alert("Successfully Updated!!!!");
+          this.email_Id = "";
+          this.empId="";
+          this.ename = "";
+          this.mobile = "";
+          this.password = "";
+          
+        }
+        
+      });
+      
+    }
+    else
+    {
+      alert("Form is not valid");
+    }
+  }
+
+
+  FormToModel(regForm:NgForm):Employee
+  {
+    this.employeeObject = new Employee;
+    this.employeeObject.empId = regForm.value.eId;
+    this.employeeObject.email_Id = regForm.value.email;
+    this.employeeObject.ename = regForm.value.empname;
+    this.employeeObject.mobile = regForm.value.PhoneNo;
+    this.employeeObject.password = regForm.value.pswd;
+    return this.employeeObject;
+  }
+  
 }

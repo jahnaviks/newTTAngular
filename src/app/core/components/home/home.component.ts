@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
       this.service.getEmployeeDetails(this.email).subscribe((res) =>
       {
         this.emp = new Employee;
-      this.emp = {
+        this.emp = {
         empId : res['empId'],
         email_Id : res['email_Id'],
         password : res['password'],
@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
     this.showTeamList = true;
   }
 
-  toHideSection(){
+  toHideListSection(){
     if(this.showTeamList == true)
     {
       this.showEditDetails = true;
@@ -82,6 +82,13 @@ export class HomeComponent implements OnInit {
       this.showEditDetails = false;
       this.showTeamList = true;
     }
+    this.showTeamList = false;
+    
+  }
+
+  toHideEditSection(){
+    this.showEditDetails = false;
+    this.getEmployeeDetails();
   }
 
   showUpdateSection(){

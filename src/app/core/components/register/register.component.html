@@ -1,113 +1,88 @@
- <div class="slider">
-    <div id="about-slider">
-      <div id="carousel-slider" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators visible-xs">
-          <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-slider" data-slide-to="1"></li>
-          <li data-target="#carousel-slider" data-slide-to="2"></li>
-        </ol>
-  
-        <div class="carousel-inner"> 
-  
-  
-          <div class="item active">
-            
-            <div class="carousel-item">
-              <div class="wow fadeInUp animated" data-wow-offset="0" data-wow-delay="0.3s" style="visibility: visible;-webkit-animation-delay: 0.3s; -moz-animation-delay: 0.3s; animation-delay: 0.3s;">
-                <h2>
-                  <span>Employee Registration Form</span>
-                </h2>
-              </div>
-              <!-- <div class="wow fadeInUp animated" data-wow-offset="0" data-wow-delay="0.6s" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;"> -->
-                  <div>
-                <form #regForm="ngForm" name="regForm" >
-                    <table class="table table-condensed table-dark table-sm">
-                        <tbody>
-                          <tr>
-                            <td><p>Name</p></td>
-                            <td><input type="text" class="form-control" name="empname" [(ngModel)]="ename" #empname="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && empname.invalid }" pattern="^[a-zA-Z ]{1,75}$" required/>
-                              <div *ngIf="regForm.submitted && empname.invalid" class="alert alert-danger col-xs-4">
-                                  <div *ngIf="empname.errors.required">Name is required</div>
-                                  <!-- <div *ngIf="fname.errors.minlength">Minimum length is 6</div> -->
-                                  <div *ngIf="empname.errors.pattern">Accepts alphabets, spaces and maximum of 75 characters</div>
-                              </div></td>
-                            </tr>
-                            
-                            <tr>
-                            <td><p>Email</p> </td>
-                            <td><input type="text" class="form-control" name="email" [(ngModel)]='email_Id' #email="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && email.invalid }" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                              <div *ngIf="regForm.submitted && email.invalid" class="alert alert-danger col-xs-4">
-                                <div *ngIf="email.errors.required">Email is required</div>
-                                <div *ngIf="email.errors.pattern">Email must be a valid email address</div>
-                            </div></td>
-                            </tr>
-                            
-                            <tr>
-                                <td><p>Mobile Number</p> </td>
-                                <td><input name="PhoneNo" class="form-control" [(ngModel)]='mobile' #PhoneNo="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && PhoneNo.invalid }"  required pattern="^[0-9]{10}$" >
-                                  <div *ngIf="regForm.submitted && PhoneNo.invalid" class="alert alert-danger col-xs-4">
-                                    <div *ngIf="PhoneNo.errors.required">Mobile Number is required</div>
-                                    <div *ngIf="PhoneNo.errors.pattern">allows only 10 numbers</div>
-                                    <!-- <div *ngIf="PhoneNo.errors.maxlength">MAximum length is 10</div> -->
-                                </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><p>Password</p></td>
-                                <td><input type="text" class="form-control" name="pswd" [(ngModel)]='Password' #pswd="ngModel" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,60}$"  [ngClass]="{ 'is-invalid': regForm.submitted && Password.invalid }">
-                                  <div *ngIf="regForm.submitted && pswd.invalid" class="alert alert-danger col-xs-4">
-                                    <div *ngIf="pswd.errors.required">Password is required</div>
-                                    <!-- <div *ngIf="pswd.errors.minlength">Minimum length is 8</div> -->
-                                    <div *ngIf="pswd.errors.pattern">Minimum 8 and maximum 60 characters atleast 1 Alphabet, 1 Number and 1 Special Character</div>
-                                </div>
-                                  </td>
-                            </tr>
-                            <tr>
-                                <td><p>Role Name</p></td>
-                                <td><input type="text" class="form-control" name="rname" [(ngModel)]="roleName" #rname="ngModel"  [ngClass]="{ 'is-invalid': regForm.submitted && rname.invalid }"  pattern="^[a-zA-Z ]{1,75}$" required />
-                                  <div *ngIf="regForm.submitted && rname.invalid" class="alert alert-danger col-xs-4">
-                                      <div *ngIf="rname.errors.required">Last Name is required</div>
-                                      <!-- <div *ngIf="lname.errors.minlength">Minimum length is 6</div> -->
-                                      <div *ngIf="rname.errors.pattern">Accepts alphabets, numbers and spaces only of minimum 6 and maximum 75 characters</div>
-                                  </div></td>
-                                </tr>
-                                <tr>
-                                    <td><p>Project Name</p> </td>
-                                    <td><input type="text" class="form-control" name="pname" [(ngModel)]='projectName' #pname="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && pname.invalid }" required maxlength="100">
-                                      <div *ngIf="regForm.submitted && pname.invalid" class="alert alert-danger col-xs-4">
-                                        <div *ngIf="pname.errors.required">Project Name is required</div>
-                                        <div *ngIf="pname.errors.minlength">Minimum length is 6</div>
-                                        <div *ngIf="pname.errors.maxlength">Maximum length is 100</div>
-                                    </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                  <td><p>AE Email</p> </td>
-                                  <td><input type="text" class="form-control" name="aeEmail" [(ngModel)]='email_Id' #email="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && email.invalid }" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-                                    <div *ngIf="regForm.submitted && email.invalid" class="alert alert-danger col-xs-4">
-                                      <div *ngIf="email.errors.required">Email is required</div>
-                                      <div *ngIf="email.errors.pattern">Email must be a valid email address</div>
-                                  </div></td>
-                                  </tr>
-                            <tr>
-                            
-                            <td><input type="submit" class="btn btn-info" value="Register" (click)="Save(regForm)"></td>
-                            <!-- <td><input *ngIf="delete" type="submit" class="btn btn-info" value="Delete" (click)="ShowRegFormForDelete(regForm)"></td> -->
-                            <td><input type="button" name="back" class="btn btn-info" value="Back to Login page" (click)="Back()"></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </form>
-              </div>
-            
-            </div>
+<body>
+  <div class="register-form">
+  <form #regForm="ngForm" name="regForm" >
+    <h3>Register Form</h3>
+    <table class="table table-condensed table-dark table-sm">
+      <tbody>
+        <tr>
+          <td><p>Name</p></td>
+          <td><input type="text" class="form-control" name="empname" [(ngModel)]="ename" #empname="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && empname.invalid }" pattern="^[a-zA-Z ]{1,75}$" required/>
+          <div *ngIf="regForm.submitted && empname.invalid" class="alert alert-danger col-xs-4">
+          <div *ngIf="empname.errors.required">Name is required</div>
+          <div *ngIf="empname.errors.pattern">Accepts alphabets, spaces and maximum of 75 characters</div>
+          </div></td>
+        </tr>
+               
+        <tr>
+          <td><p>Email</p> </td>
+          <td><input type="text" class="form-control" name="email" [(ngModel)]='email_Id' #email="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && email.invalid }" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+          <div *ngIf="regForm.submitted && email.invalid" class="alert alert-danger col-xs-4">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.pattern">Email must be a valid email address</div>
+          </div></td>
+        </tr>
+                              
+        <tr>
+          <td><p>Mobile Number</p> </td>
+          <td><input name="PhoneNo" class="form-control" [(ngModel)]='mobile' #PhoneNo="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && PhoneNo.invalid }"  required pattern="^[0-9]{10}$" >
+          <div *ngIf="regForm.submitted && PhoneNo.invalid" class="alert alert-danger col-xs-4">
+          <div *ngIf="PhoneNo.errors.required">Mobile Number is required</div>
+          <div *ngIf="PhoneNo.errors.pattern">allows only 10 numbers</div>
           </div>
-        </div>
-  
-      </div>
-      <!--/#carousel-slider-->
-    </div>
-    <!--/#about-slider-->
+          </td>
+        </tr>
+        <tr>
+          <td><p>Password</p></td>
+          <td><input type="text" class="form-control" name="pswd" [(ngModel)]='Password' #pswd="ngModel" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,60}$"  [ngClass]="{ 'is-invalid': regForm.submitted && Password.invalid }">
+          <div *ngIf="regForm.submitted && pswd.invalid" class="alert alert-danger col-xs-4">
+          <div *ngIf="pswd.errors.required">Password is required</div>
+          <div *ngIf="pswd.errors.pattern">Minimum 8 and maximum 60 characters atleast 1 Alphabet, 1 Number and 1 Special Character</div>
+          </div>
+          </td>
+        </tr>
+        <tr>
+          <td><p>Role Name</p></td>
+          <td>
+              <select name="rname" class="form-control" [(ngModel)]="roleName" #rname="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && rname.invalid }" required>
+                  <option value="teammember" selected >Team Member</option>
+                  <option value="teamlead" >Team Lead</option>
+                  <option value="manager" >Manager</option>
+                </select>
+          </td>
+          <!-- <td><input type="text" class="form-control" name="rname" [(ngModel)]="roleName" #rname="ngModel"  [ngClass]="{ 'is-invalid': regForm.submitted && rname.invalid }"  pattern="^[a-zA-Z ]{1,75}$" required />
+          <div *ngIf="regForm.submitted && rname.invalid" class="alert alert-danger col-xs-4">
+          <div *ngIf="rname.errors.required">Last Name is required</div>
+          <div *ngIf="rname.errors.pattern">Accepts alphabets, numbers and spaces only of minimum 6 and maximum 75 characters</div>
+          </div></td> -->
+        </tr>
+        <tr>
+          <td><p>Project Name</p> </td>
+          <td><input type="text" class="form-control" name="pname" [(ngModel)]='projectName' #pname="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && pname.invalid }" required maxlength="100">
+          <div *ngIf="regForm.submitted && pname.invalid" class="alert alert-danger col-xs-4">
+          <div *ngIf="pname.errors.required">Project Name is required</div>
+          <div *ngIf="pname.errors.minlength">Minimum length is 6</div>
+          <div *ngIf="pname.errors.maxlength">Maximum length is 100</div>
+          </div>
+          </td>
+        </tr>
+        <tr>
+          <td><p>AE Email</p> </td>
+          <td><input type="text" class="form-control" name="aeEmail" [(ngModel)]='ae_email_Id' #aeEmail="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+          <!-- <div *ngIf="regForm.submitted && email.invalid" class="alert alert-danger col-xs-4"> -->
+          <!-- <div *ngIf="email.errors.required">Email is required</div> -->
+          <!-- <div *ngIf="email.errors.pattern">Email must be a valid email address</div> -->
+          <!-- </div> -->
+        </td>
+        </tr>
+        <tr>
+         
+          <td><input type="submit" class="btn btn-info" value="Register" (click)="Save(regForm)"></td>
+        <!-- </tr>
+        <tr> -->
+          <td><input type="button" name="back" class="btn btn-info" value="Back to Login page" (click)="Back()"></td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
   </div>
-  <!--/#slider-->
+  </body>

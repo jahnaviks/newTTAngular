@@ -1,3 +1,48 @@
 input.form-control {
-    width: auto;
-  }
+  width: auto;
+}
+body:before{
+  content:'';
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../../../../assets/img/18.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.register-form{
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width: 500px;
+  height: 500px;
+  padding:20px 40px;
+  box-sizing: border-box;
+  background: rgba(0,0,0,.5);
+}
+.register-form p{
+  margin:0;
+  padding:0;
+  font-weight:bold;
+  color:#fff;
+}
+.register-form input,
+.register-form select{
+  width: 90%;
+}
+.register-form input[type="submit"],
+.register-form input[type="button"]
+{
+height: 30px;
+color:#fff;
+font-size:15px;
+background:rgb(133, 127, 127);
+cursor: pointer;
+border-radius: 25px;
+border:none;
+outline:none;
+/* margin-top:10%; */
+}

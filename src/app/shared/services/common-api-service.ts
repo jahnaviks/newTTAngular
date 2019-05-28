@@ -63,6 +63,18 @@ export class CommonAPIsService {
         return this._http.post<Employee>(this.endpoint + "Register",body,this.header);
     }
 
+    UpdateSelfDetails(emp:Employee)
+    {
+        var body=JSON.stringify(emp);
+        return this._http.post<Employee>(this.endpoint + "UpdateSelfDetails",body,this.header);
+    }
+
+    UpdateTeamMemberDetails(emp:Employee)
+    {
+        var body=JSON.stringify(emp);
+        return this._http.post<Employee>(this.endpoint + "UpdateTeamMemberDetails",body,this.header);
+    }
+
     private handleError(error:Response){
         return 'This Api Call has some error'+error.status;
     }

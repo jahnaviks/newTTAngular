@@ -1,35 +1,4 @@
-<!-- <table class="table table-condensed fontColor" border="1">
-    <thead>
-      <tr>
-        <th><font color="black">Employee ID</font></th>
-        <th><font color="black">Email ID</font></th>
-        <th><font color="black">Employee Name</font></th>
-        <th><font color="black">Mobile Number</font></th>
-        <th><font color="black">Is Active</font></th>
-        <th><font color="black">Role ID</font></th>
-        <th><font color="black">Role Name</font></th>
-        <th><font color="black">Project ID</font></th>
-        <th><font color="black">Project Name</font></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="success" *ngFor="let emp of arrlist"> 
-        <td><font color="black" *ngIf="emp?.empId">{{emp.empId}}</font></td>
-        <td><font color="black" *ngIf="emp?.email_Id">{{emp.email_Id}}</font></td>
-        <td><font color="black" *ngIf="emp?.ename">{{emp.ename}}</font></td>
-        <td><font color="black" *ngIf="emp?.mobile">{{emp.mobile}}</font></td>
-        <td><font color="black" *ngIf="emp?.isActive">{{emp.isActive}}</font></td>
-        <td><font color="black" *ngIf="emp?.roleId">{{emp.roleId}}</font></td>
-        <td><font color="black" *ngIf="emp?.roleName">{{emp.roleName}}</font></td>            
-        <td><font color="black" *ngIf="emp?.projectId">{{emp.projectId}}</font></td>
-        <td><font color="black" *ngIf="emp?.projectName">{{emp.projectName}}</font></td>
-        
-      </tr>
-    </tbody>
-  </table> -->
-
-
-  <style>.pointer {cursor: pointer;}</style>
+<style>.pointer {cursor: pointer;}</style>
 
   <div class="mat-elevation-z8">  
     <table mat-table [dataSource]="employeelist" matSort class="table table-inverse table-hover">  
@@ -97,7 +66,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>  
     </table>  
     
-    <mat-paginator [pageSizeOptions]="[5, 10, 25,50,75, 100]"></mat-paginator>  
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25,50,75, 100]"></mat-paginator>   -->
   </div> 
 
 
@@ -105,32 +74,36 @@
   <form #regForm="ngForm" name="regForm" >
     <table class="table table-condensed">
         <tbody>
+            <tr>
+                <td><p>Id</p></td>
+                <td><input readonly type="text" class="form-control" name="eId" [(ngModel)]="empId" #eId="ngModel" />
+                    </td>
+            </tr>
           <tr>
             <td><p>Name</p></td>
-            <td><input type="text" class="form-control" name="empname" [(ngModel)]="ename" #empname="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && empname.invalid }" pattern="^[a-zA-Z ]{1,75}$" required/>
-              <div *ngIf="regForm.submitted && empname.invalid" class="alert alert-danger col-xs-4">
-                  <div *ngIf="empname.errors.required">Name is required</div>
-                  <!-- <div *ngIf="fname.errors.minlength">Minimum length is 6</div> -->
-                  <div *ngIf="empname.errors.pattern">Accepts alphabets, spaces and maximum of 75 characters</div>
-              </div></td>
+            <td><input readonly type="text" class="form-control" name="empname" [(ngModel)]="ename" #empname="ngModel" />
+              </td>
             </tr>
             
             <tr>
             <td><p>Email</p> </td>
-            <td><input type="text" class="form-control" name="email" [(ngModel)]='email_Id' #email="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && email.invalid }" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
-              <div *ngIf="regForm.submitted && email.invalid" class="alert alert-danger col-xs-4">
-                <div *ngIf="email.errors.required">Email is required</div>
-                <div *ngIf="email.errors.pattern">Email must be a valid email address</div>
-            </div></td>
+            <td><input readonly type="text" class="form-control" name="email" [(ngModel)]='email_Id' #email="ngModel" >
+              </td>
             </tr>
             
             <tr>
                 <td><p>Role Name</p></td>
-                <td><input type="text" class="form-control" name="rname" [(ngModel)]="roleName" #rname="ngModel"  [ngClass]="{ 'is-invalid': regForm.submitted && rname.invalid }"  pattern="^[a-zA-Z ]{1,75}$" required />
+                <td>
+                    <select name="rname" class="form-control" [(ngModel)]="roleName" #rname="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && rname.invalid }" required>
+                        <option value="teammember" selected >Team Member</option>
+                        <option value="teamlead" >Team Lead</option>
+                        <option value="manager" >Manager</option>
+                      </select>
+                </td>
+                <!-- <td><input type="text" class="form-control" name="rname" [(ngModel)]="roleName" #rname="ngModel"  [ngClass]="{ 'is-invalid': regForm.submitted && rname.invalid }"  pattern="^[a-zA-Z ]{1,75}$" required />
                   <div *ngIf="regForm.submitted && rname.invalid" class="alert alert-danger col-xs-4">
                       <div *ngIf="rname.errors.required">Role Name is required</div>
-                      <!-- <div *ngIf="lname.errors.minlength">Minimum length is 6</div> -->
-                  </div></td>
+                  </div></td> -->
                 </tr>
                 <tr>
                     <td><p>Project Name</p> </td>

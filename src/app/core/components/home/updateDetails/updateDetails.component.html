@@ -3,17 +3,13 @@
             <tbody>
                 <tr>
                     <td><p>Id</p></td>
-                    <td><input disabled type="text" class="form-control" name="eId" [(ngModel)]="empId" #eId="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && eId.invalid }" pattern="^[a-zA-Z ]{1,75}$" required/>
-                        <div *ngIf="regForm.submitted && empname.invalid" class="alert alert-danger col-xs-4">
-                        <div *ngIf="eId.errors.required">Name is required</div>
-                        <!-- <div *ngIf="fname.errors.minlength">Minimum length is 6</div> -->
-                        <div *ngIf="eId.errors.pattern">Accepts alphabets, spaces and maximum of 75 characters</div>
-                        </div></td>
+                    <td><input readonly type="text" class="form-control" name="eId" [(ngModel)]="empId" #eId="ngModel" />
+                        </td>
                 </tr>
                              
                 <tr>
                 <td><p>Email</p> </td>
-                <td><input disabled type="text" class="form-control" name="email" [(ngModel)]='email_Id' #email="ngModel" [ngClass]="{ 'is-invalid': regForm.submitted && email.invalid }" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                <td><input readonly type="text" class="form-control" name="email" [(ngModel)]='email_Id' #email="ngModel" >
                   </td>
                 </tr>
                 
@@ -48,9 +44,10 @@
                 </tr>
                 <tr>
                 
-                <td><input type="submit" class="btn btn-info" value="Register" (click)="Save(regForm)"></td>
+                <td><input type="submit" class="btn btn-info" value="Update" (click)="Save(regForm)"></td>
+                <!-- <input type="button" name="hideEditDetails" class="btn btn-info" value="Hide edit section" (click)="buttonClick.emit()"> -->
                 <!-- <td><input *ngIf="delete" type="submit" class="btn btn-info" value="Delete" (click)="ShowRegFormForDelete(regForm)"></td> -->
-                <td><input type="button" name="back" class="btn btn-info" value="Back to Login page" (click)="Back()"></td>
+                <!-- <td><input type="button" name="back" class="btn btn-info" value="Back to Login page" (click)="Back()"></td> -->
               </tr>
             </tbody>
           </table>

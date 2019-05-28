@@ -18,6 +18,7 @@ export class listTeamMembersComponent implements OnInit{
     projectName:string="";
     isActive:string="";
     ae_email_Id:string="";
+    empId:string="";
     email : string;
     emp :Employee;
     showEditPage : boolean;
@@ -75,6 +76,7 @@ this.service.currentMessage.subscribe(email => {
 ShowRegForm(Employee){
   //this.showListPage = false;
   this.showEditPage= true;
+  this.empId= Employee.empId;
   this.email_Id = Employee.email_Id;
   this.ename = Employee.ename;
   this.isActive= Employee.isActive;
@@ -86,13 +88,32 @@ ShowRegForm(Employee){
 UpdateTeamDetails(regForm:NgForm){
  // this.showListPage = true;
   this.showEditPage= false;
-this.emp = new Employee;
-this.emp.ae_email_Id = regForm.value.AEemail;
-this.emp.ename = regForm.value.empname;
-this.emp.email_Id = regForm.value.email;
-this.emp.roleName = regForm.value.rname;
-this.emp.projectName = regForm.value.pname;
-this.emp.isActive = regForm.value.active;
+  this.emp = new Employee;
+  this.emp.empId = regForm.value.eId;
+  this.emp.ae_email_Id = regForm.value.AEemail;
+  this.emp.ename = regForm.value.empname;
+  this.emp.email_Id = regForm.value.email;
+  this.emp.roleName = regForm.value.rname;
+  this.emp.projectName = regForm.value.pname;
+  this.emp.isActive = regForm.value.active;
+  this.service.UpdateTeamMemberDetails(this.emp).subscribe(res =>
+  {
+    console.log(res);
+    //result:string;
+    if(res)
+    {
+      console.log(this.emp);
+      alert("Successfully Updated!!!!");
+      this.email_Id = "";
+      this.empId="";
+      this.ename = "";
+      this.roleName = "";
+      this.projectName = "";
+      this.isActive = "";
+      this.ae_email_Id = "";
+    }
+    
+  });
 }
  }
 
